@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
-// change title
 
 const App = () => {
-
-  const [header, setHeader] = useState("Welcome to react hookds")
+  const [userName, setUsername] = useState("johndoe");
+  const [firstName, setFirstname] = useState("John");
+  const [lastName, setLastname] = useState("Doe");
 
   useEffect(() => {
-    const newheader = document.querySelectAll('#header')[0];
-    setTimeout(() => {
+    setInterval(() => {
       setUsername("janedoe");
       setFirstname("Jane");
       setLastname("Doe");
