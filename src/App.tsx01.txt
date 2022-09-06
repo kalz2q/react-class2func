@@ -1,14 +1,18 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
+// change title
 
 const App = () => {
-  useEffect(() => {
-    document.title = "Welcome to react hooks";
-  });
+  const [header, setHeader] = useState("Welcome to react hookds");
 
-  const [userName, setUserName] = useState("");
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
+  useEffect(() => {
+    const newheader = document.querySelectAll("#header")[0];
+    setTimeout(() => {
+      setUsername("janedoe");
+      setFirstname("Jane");
+      setLastname("Doe");
+    }, 5000);
+  });
 
   const logName = () => {
     console.log(userName);
@@ -16,16 +20,22 @@ const App = () => {
     console.log(lastName);
   };
 
-  const handleUserNameInput = (inputValue: string) => {
-    setUserName(inputValue);
+  const handleUserNameInput = (e: {
+    target: { value: React.SetStateAction<string> };
+  }) => {
+    setUsername(e.target.value);
   };
 
-  const handleFirstNameInput = (inputValue: string) => {
-    setFirstName(inputValue);
+  const handleFirstNameInput = (e: {
+    target: { value: React.SetStateAction<string> };
+  }) => {
+    setFirstname(e.target.value);
   };
 
-  const handleLastNameInput = (inputValue: string) => {
-    setLastName(inputValue);
+  const handleLastNameInput = (e: {
+    target: { value: React.SetStateAction<string> };
+  }) => {
+    setLastname(e.target.value);
   };
 
   return (
@@ -33,30 +43,25 @@ const App = () => {
       <h3>This is a Functional Component</h3>
       <input
         type="text"
-        onChange={(e) => handleUserNameInput(e.target.value)}
+        onChange={handleUserNameInput}
         value={userName}
         placeholder="Your Username"
       />
       <input
         type="text"
-        onChange={(e) => handleFirstNameInput(e.target.value)}
+        onChange={handleFirstNameInput}
         value={firstName}
         placeholder="Your First Name"
       />
       <input
         type="text"
-        onChange={(e) => handleLastNameInput(e.target.value)}
+        onChange={handleLastNameInput}
         value={lastName}
         placeholder="Your Last Name"
       />
       <button className="btn btn-large right" onClick={logName}>
         Log Names
       </button>
-      <h1>
-        {lastName}
-        {firstName}
-        {userName}
-      </h1>
     </div>
   );
 };
