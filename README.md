@@ -16,3 +16,8 @@ rewrite class component to functional componen
 3. <div></div> だけでなんとかする方法
 があると思う
 
+onchangeの研究
+react-onchange-study
+3. 素のママ
+1. textarea => input にする
+2. react-class2func を云々

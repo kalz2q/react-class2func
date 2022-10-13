@@ -3,9 +3,7 @@ import "./App.css";
 
 const App = () => {
   const [name, setName] = useState("John Doe");
-  const alertName = () => {
-    alert(name);
-  };
+  const [name2, setName2] = useState("jon do");
 
   const handleNameInput = (e: {
     target: { value: React.SetStateAction<string> };
@@ -13,17 +11,29 @@ const App = () => {
     setName(e.target.value);
   };
 
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setName2(e.target.value);
+  };
 
   return (
     <div className="App">
-      <h3>This is a Functional Component</h3>
+      <h3>onchange の研究その1 素のママ</h3>
       <input
         type="text"
-        onChange={handleNameInput}
+        placeholder="Your Name"
+      ></input>
+      <h3>onchange の研究その2 handleNameInput</h3>
+      <input
+        type="text"
+        onChange={(e) => handleNameInput(e)}
         value={name}
         placeholder="Your Name"
       />
-      <button onClick={alertName}>Alert</button>
+      <h3>onchange の研究その3 handleChange</h3>
+      <input
+        value={name2}
+        onChange={(e) => handleChange(e)}
+      />
     </div>
   );
 };
