@@ -1,0 +1,63 @@
+import React from "react";
+import "./App.css";
+// onChange でも react-onchange-demo に書き換える
+const { useState } = React;
+
+
+const App = () => {
+  const [userName, setUserName] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+
+  const logName = () => {
+    console.log(userName);
+    console.log(firstName);
+    console.log(lastName);
+  };
+
+  const handleUserNameInput = (inputValue: string) => {
+    setUserName(inputValue);
+  };
+
+  const handleFirstNameInput = (inputValue: string) => {
+    setFirstName(inputValue);
+  };
+
+  const handleLastNameInput = (inputValue: string) => {
+    setLastName(inputValue);
+  };
+
+  return (
+    <div className="App">
+      <h3>This is a Functional Component</h3>
+      <input
+        type="text"
+        onChange={(e) => handleUserNameInput(e.target.value)}
+        value={userName}
+        placeholder="Your Username"
+      />
+      <input
+        type="text"
+        onChange={(e) => handleFirstNameInput(e.target.value)}
+        value={firstName}
+        placeholder="Your First Name"
+      />
+      <input
+        type="text"
+        onChange={(e) => handleLastNameInput(e.target.value)}
+        value={lastName}
+        placeholder="Your Last Name"
+      />
+      <button className="btn btn-large right" onClick={logName}>
+        Log Names
+      </button>
+      <h1>
+        {lastName}
+        {firstName}
+        {userName}
+      </h1>
+    </div>
+  );
+};
+
+export default App;

@@ -1,62 +1,29 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./App.css";
 
 const App = () => {
-  useEffect(() => {
-    document.title = "Welcome to react hooks";
-  });
-
-  const [userName, setUserName] = useState("");
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-
-  const logName = () => {
-    console.log(userName);
-    console.log(firstName);
-    console.log(lastName);
+  const [name, setName] = useState("John Doe");
+  const alertName = () => {
+    alert(name);
   };
 
-  const handleUserNameInput = (inputValue: string) => {
-    setUserName(inputValue);
+  const handleNameInput = (e: {
+    target: { value: React.SetStateAction<string> };
+  }) => {
+    setName(e.target.value);
   };
 
-  const handleFirstNameInput = (inputValue: string) => {
-    setFirstName(inputValue);
-  };
-
-  const handleLastNameInput = (inputValue: string) => {
-    setLastName(inputValue);
-  };
 
   return (
     <div className="App">
       <h3>This is a Functional Component</h3>
       <input
         type="text"
-        onChange={(e) => handleUserNameInput(e.target.value)}
-        value={userName}
-        placeholder="Your Username"
+        onChange={handleNameInput}
+        value={name}
+        placeholder="Your Name"
       />
-      <input
-        type="text"
-        onChange={(e) => handleFirstNameInput(e.target.value)}
-        value={firstName}
-        placeholder="Your First Name"
-      />
-      <input
-        type="text"
-        onChange={(e) => handleLastNameInput(e.target.value)}
-        value={lastName}
-        placeholder="Your Last Name"
-      />
-      <button className="btn btn-large right" onClick={logName}>
-        Log Names
-      </button>
-      <h1>
-        {lastName}
-        {firstName}
-        {userName}
-      </h1>
+      <button onClick={alertName}>Alert</button>
     </div>
   );
 };
