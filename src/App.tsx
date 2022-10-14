@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import "./App.css";
-
+// 
+const { useState } = React;
 const App = () => {
   const [name, setName] = useState("John Doe");
   const [name2, setName2] = useState("jon do");
